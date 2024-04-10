@@ -1,2 +1,2 @@
-# Heleonix.Reporting.Trx
-The .NET CLI tool to generate html reports from trx files
+# Heleonix.Reporting
+The .NET CLI tool to generate human-friendly reports from technical files
