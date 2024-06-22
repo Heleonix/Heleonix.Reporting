@@ -1,0 +1,135 @@
+﻿﻿@using System
+@using Heleonix.Testing.Reporting.Domain
+
+@inherits RazorEngineCore.RazorEngineTemplateBase<Report>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        @*CssTemplate*@
+    </style>
+    <style>
+        :root {
+            @foreach (var style in Model.Styles)
+            {
+                @:--@style.Key@: @style.Value@;
+            }
+        }
+    </style>
+    <script>
+        @*JsTemplate*@
+    </script>
+    <title>@Model.Result.Summary.Title</title>
+</head>
+<body class="main-page">
+    <header class="main-header">
+        <span class="owner">@Model.Result.Summary.Owner</span>
+        <h4 class="outcome">@Model.Result.Summary.Outcome</h4>
+        <time class="date-time -end" data-role="report-datetime-end" data-end="@Model.Result.Summary.EndTime.ToString("O")"></time>
+    </header>
+    <section class="test-summary -assemblies" data-role="summary-assemblies">
+        <h5 class="passedrate"><span data-role="count-passedrate" class="count"></span>% Passed</h5>
+        <figure class="chart">
+            <div class="pie" data-role="chart-surface"></div>
+            <figcaption class="legend">
+                <h6 class="title">Total: <span class="count" data-role="count-total"></span></h6>
+                <p class="desc -passed"><img class="outcome-badge -passed" /> Passed: <span class="count" data-role="count-passed"></span></p>
+                <p class="desc -warning"><img class="outcome-badge -warning" /> Warning: <span class="count" data-role="count-warning"></span></p>
+                <p class="desc -failed"><img class="outcome-badge -failed" /> Failed: <span class="count" data-role="count-failed"></span></p>
+                <p class="desc -error"><img class="outcome-badge -error" /> Error: <span class="count" data-role="count-error"></span></p>
+                <p class="desc -skipped"><img class="outcome-badge -skipped" /> Skipped: <span class="count" data-role="count-skipped"></span></p>
+                <p class="desc -other"><img class="outcome-badge -other" /> Other: <span class="count" data-role="count-other"></span></p>
+            </figcaption>
+        </figure>
+        <div class="timing">
+            <time class="date-time -start" data-role="datetime-start"></time>
+            <time class="date-time -duration" data-role="datetime-duration"></time>
+            <time class="date-time -end" data-role="datetime-end"></time>
+        </div>
+    </section>
+    <nav class="test-list -assemblies">
+        @foreach(var assembly in Model.Result.Assemblies)
+        {
+            <a class="test-item" href="#" data-role="item-assembly" data-key="@assembly.Key">@assembly.Title</a>
+        }
+    </nav>
+    <section class="test-summary -classes" data-role="summary-classes">
+        <h5 class="passedrate"><span class="count" data-role="count-passedrate"></span>% Passed</h5>
+        <figure class="chart">
+            <div class="pie" data-role="chart-surface"></div>
+            <figcaption class="legend">
+                <h6 class="title">Total: <span class="count" data-role="count-total"></span></h6>
+                <p class="desc -passed"><img class="outcome-badge -passed" /> Passed: <span class="count" data-role="count-passed"></span></p>
+                <p class="desc -warning"><img class="outcome-badge -warning" /> Warning: <span class="count" data-role="count-warning"></span></p>
+                <p class="desc -failed"><img class="outcome-badge -failed" /> Failed: <span class="count" data-role="count-failed"></span></p>
+                <p class="desc -error"><img class="outcome-badge -error" /> Error: <span class="count" data-role="count-error"></span></p>
+                <p class="desc -skipped"><img class="outcome-badge -skipped" /> Skipped: <span class="count" data-role="count-skipped"></span></p>
+                <p class="desc -other"><img class="outcome-badge -other" /> Other: <span class="count" data-role="count-other"></span></p>
+            </figcaption>
+        </figure>
+        <div class="timing">
+            <time class="date-time -start" data-role="datetime-start"></time>
+            <time class="date-time -duration" data-role="datetime-duration"></time>
+            <time class="date-time -end" data-role="datetime-end"></time>
+        </div>
+    </section>
+    <nav class="test-list -classes">
+        @foreach(var cls in Model.Result.Classes)
+        {
+            <a class="test-item" href="#" data-role="item-class" data-parent-key="@cls.ParentKey" data-key="@cls.Key">@cls.Title</a>
+        }
+    </nav>
+    <section class="test-summary -testcases" data-role="summary-testcases">
+        <h5 class="passedrate"><span class="count" data-role="count-passedrate"></span>% Passed</h5>
+        <figure class="chart">
+            <div class="pie" data-role="chart-surface"></div>
+            <figcaption class="legend">
+                <h6 class="title">Total: <span class="count" data-role="count-total"></span></h6>
+                <p class="desc -passed"><img class="outcome-badge -passed" /> Passed: <span class="count" data-role="count-passed"></span></p>
+                <p class="desc -warning"><img class="outcome-badge -warning" /> Warning: <span class="count" data-role="count-warning"></span></p>
+                <p class="desc -failed"><img class="outcome-badge -failed" /> Failed: <span class="count" data-role="count-failed"></span></p>
+                <p class="desc -error"><img class="outcome-badge -error" /> Error: <span class="count" data-role="count-error"></span></p>
+                <p class="desc -skipped"><img class="outcome-badge -skipped" /> Skipped: <span class="count" data-role="count-skipped"></span></p>
+                <p class="desc -other"><img class="outcome-badge -other" /> Other: <span class="count" data-role="count-other"></span></p>
+            </figcaption>
+        </figure>
+        <div class="timing">
+            <time class="date-time -start" data-role="datetime-start"></time>
+            <time class="date-time -duration" data-role="datetime-duration"></time>
+            <time class="date-time -end" data-role="datetime-end"></time>
+        </div>
+    </section>
+    <section class="test-list -testcases">
+        @foreach (var testCase in Model.Result.TestCases)
+        {
+            <details class="test-case" data-role="item-testcase" data-parent-key="@testCase.ParentKey"
+                     data-outcome="@testCase.Outcome.ToString().ToLower()"
+                     data-duration="@testCase.Duration"
+                     data-start="@testCase.Start.ToString("O")"
+                     data-end="@testCase.End.ToString("O")"
+                     data-has-details="@(!string.IsNullOrEmpty(testCase.Output) || !string.IsNullOrEmpty(testCase.Errors) ? "true" : "false")">
+                <summary class="summary">
+                    <span class="outcome-badge -@testCase.Outcome.ToString().ToLower()"></span>
+                    <span class="title">@testCase.Title</span>
+                    <span class="date-time -duration" data-role="datetime-duration"></span>
+                </summary>
+                @if(!string.IsNullOrEmpty(testCase.Output))
+                {
+                    <textarea readonly rows="10" class="details -output">@testCase.Output</textarea>
+                }
+                @if (!string.IsNullOrEmpty(testCase.Errors))
+                {
+                    <textarea readonly rows="10" class="details -errors">@testCase.Errors</textarea>
+                }
+            </details>
+        }
+    </section>
+    <footer class="main-footer">
+        <a class="about" href="@Model.Footer.Url">@Model.Footer.Text</a>
+    </footer>
+</body>
+
+</html>
