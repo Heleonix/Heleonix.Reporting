@@ -55,14 +55,14 @@ Having the [Sample.trx](https://github.com/Heleonix/Heleonix.Testing.Reporting/b
 the following Html report is generated:<br>
 `hxreport -i ./Sample.trx -o ./Sample.html -f Html`<br>
 
-![DefaultTemplateReport](images/DefaultTemplateReport.png)
+![DefaultTemplateReport](https://raw.githubusercontent.com/Heleonix/docs/master/Testing/Heleonix.Testing.Reporting/images/DefaultTemplateReport.png)
 
 Having the [Sample.trx](https://github.com/Heleonix/Heleonix.Testing.Reporting/blob/master/test/Heleonix.Testing.Reporting.Tests/Samples/Sample.trx),
 the following Html report is generated, using the [Material Design palette tool](https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors)
 and the primary `#C51162` color:<br>
 `hxreport -i ./Sample.trx -o ./Sample.html -f Html -s color-primary=#c51162 color-on-primary=#ffffff color-secondary=#c511bc color-background=#fce4ed color-on-background=#c51162 color-on-surface=#000000 color-start=#f48fb6 color-end=#8eddae color-duration=#df87d7 color-passed=lightgreen color-failed=red color-error=darkred color-warning=orange color-skipped=lightblue color-other=lightpink color-undefined=lightgray -c Footer.Text="(c) My Company" Footer.Url="https://my.company.com"`<br>
 
-![OverridenTemplateReport](images/OverridenTemplateReport.png)
+![OverridenTemplateReport](https://raw.githubusercontent.com/Heleonix/docs/master/Testing/Heleonix.Testing.Reporting/images/OverridenTemplateReport.png)
 
 ## Contribution Guideline
 
