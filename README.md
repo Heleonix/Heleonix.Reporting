@@ -15,14 +15,14 @@ See [Heleonix.Testing.Reporting](https://heleonix.github.io/docs/Testing/Heleoni
 ## Command-line interface
 
 |Option                                                                         | Description
-|-------------------------------------------------------------------------------|
+|-------------------------------------------------------------------------------|------------
 |-i, --input &lt;path&gt; (REQUIRED)                                            | Input files to generate reports from
 |-o, --output &lt;path&gt; (REQUIRED)                                           | Path of the output file to store the generated merged report in (see the --merge option) or path of the folder to store multiple generated reports
 |-f, --format &lt;Html&gt; (REQUIRED)                                           | Format of the output report
 |-m, --merge                                                                    | Determines whether the input files should be merged into a single output report, or every input file should have a separate generated output report
 |-s, --style &lt;variable-name=value&gt;                                        | The key=value pairs to specify custom styling via CSS variables, i.e. colors, for the output reports
 |-c, --content &lt;property.path=value&gt;                                      | The key=value pairs to specify custom content replacements i.e. header or footer, in the output reports.
-|-v, --verbosity<br>&lt;Critical/Debug/Error/Information/None/Trace/Warning&gt; | Sets the verbosity level for logging [default: Information]
+|-v, --verbosity &lt;Critical/Debug/Error/Information/None/Trace/Warning&gt;    | Sets the verbosity level for logging [default: Information]
 |--version                                                                      | Show version information
 |-?, -h, --help                                                                 | Show help and usage information
 
@@ -31,7 +31,7 @@ See [Heleonix.Testing.Reporting](https://heleonix.github.io/docs/Testing/Heleoni
 Possible values for the `--style` option:
 
 Format | Values
--------|
+-------|-------
 Html   | See CSS 3 variables in the [Css.css](https://github.com/Heleonix/Heleonix.Testing.Reporting/blob/master/src/Heleonix.Testing.Reporting/Infrastructure/Html/Css.css) without `--` prefixes, i.e.: `color-primary`, `color-secondary` etc.
 
 Styling approaches the [M2 Material Design](https://m2.material.io/) with set of color, typography, shaping and spacing variables.
@@ -40,27 +40,27 @@ To simplify your custom styling, you can use [Material Design palette tool](http
 
 ### Content
 
-Possible values of the `--content` option are dotted paths to properties in the [Report.cs](https://github.com/Heleonix/Heleonix.Testing.Reporting/blob/master/src/Heleonix.Testing.Reporting/Domain/Report.cs).<br>
+Possible values of the `--content` option are dotted paths to properties in the [Report.cs](https://github.com/Heleonix/Heleonix.Testing.Reporting/blob/master/src/Heleonix.Testing.Reporting/Domain/Report.cs).\
 For example: `Footer.Text`, `Footer.Url`, `Result.Summary.Title`, `Result.Summary.Owner` etc.
 
 ### Examples
 
-`hxreport -i ./TestResult1.trx ./TestResult2.trx -o ./TestResult.html -f Html -m`<br>
+`hxreport -i ./TestResult1.trx ./TestResult2.trx -o ./TestResult.html -f Html -m`\
 Converts two TRX test results into a single merged Html output file.
 
-`hxreport -i ./TestResult1.trx ./TestResult2.trx -o ./TestResultFolder -f Html`<br>
+`hxreport -i ./TestResult1.trx ./TestResult2.trx -o ./TestResultFolder -f Html`\
 Converts two TRX test results into two Html output files placed in the `./TestResultFolder` folder.
 
 Having the [Sample.trx](https://github.com/Heleonix/Heleonix.Testing.Reporting/blob/master/test/Heleonix.Testing.Reporting.Tests/Samples/Sample.trx),
-the following Html report is generated:<br>
-`hxreport -i ./Sample.trx -o ./Sample.html -f Html`<br>
+the following Html report is generated:\
+`hxreport -i ./Sample.trx -o ./Sample.html -f Html`
 
 ![DefaultTemplateReport](https://raw.githubusercontent.com/Heleonix/docs/master/Testing/Heleonix.Testing.Reporting/images/DefaultTemplateReport.png)
 
 Having the [Sample.trx](https://github.com/Heleonix/Heleonix.Testing.Reporting/blob/master/test/Heleonix.Testing.Reporting.Tests/Samples/Sample.trx),
 the following Html report is generated, using the [Material Design palette tool](https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors)
-and the primary `#C51162` color:<br>
-`hxreport -i ./Sample.trx -o ./Sample.html -f Html -s color-primary=#c51162 color-on-primary=#ffffff color-secondary=#c511bc color-background=#fce4ed color-on-background=#c51162 color-on-surface=#000000 color-start=#f48fb6 color-end=#8eddae color-duration=#df87d7 color-passed=lightgreen color-failed=red color-error=darkred color-warning=orange color-skipped=lightblue color-other=lightpink color-undefined=lightgray -c Footer.Text="(c) My Company" Footer.Url="https://my.company.com"`<br>
+and the primary `#C51162` color:\
+`hxreport -i ./Sample.trx -o ./Sample.html -f Html -s color-primary=#c51162 color-on-primary=#ffffff color-secondary=#c511bc color-background=#fce4ed color-on-background=#c51162 color-on-surface=#000000 color-start=#f48fb6 color-end=#8eddae color-duration=#df87d7 color-passed=lightgreen color-failed=red color-error=darkred color-warning=orange color-skipped=lightblue color-other=lightpink color-undefined=lightgray -c Footer.Text="(c) My Company" Footer.Url="https://my.company.com"`
 
 ![OverridenTemplateReport](https://raw.githubusercontent.com/Heleonix/docs/master/Testing/Heleonix.Testing.Reporting/images/OverridenTemplateReport.png)
 
