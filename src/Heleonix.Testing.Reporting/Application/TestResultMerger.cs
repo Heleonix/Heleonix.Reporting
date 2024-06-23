@@ -26,11 +26,11 @@ public class TestResultMerger(ILogger<TestResultMerger> logger) : ITestResultMer
 
         MergeSummary(results, mergedResult);
 
-        mergedResult.Assemblies = results.SelectMany(r => r.Assemblies);
+        mergedResult.Assemblies = results.SelectMany(r => r.Assemblies).ToArray();
 
-        mergedResult.Classes = results.SelectMany(r => r.Classes);
+        mergedResult.Classes = results.SelectMany(r => r.Classes).ToArray();
 
-        mergedResult.TestCases = results.SelectMany(r => r.TestCases);
+        mergedResult.TestCases = results.SelectMany(r => r.TestCases).ToArray();
 
         return mergedResult;
     }
